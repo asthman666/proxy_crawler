@@ -13,6 +13,7 @@ my $ua = LWP::UserAgent->new();
 $ua->agent('Mozilla/5.0 (X11; Ubuntu; Linux x86_64; rv:32.0) Gecko/20100101 Firefox/32.0');
 
 open my $fh, ">", "proxy_list.txt";
+select((select($fh), $| = 1)[0]);
 
 my $proxy_url = "http://cn-proxy.com/";
 my $resp = $ua->get($proxy_url);
